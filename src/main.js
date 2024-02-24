@@ -6,7 +6,18 @@
 // додай пошук погоди в конкретному місті використовуючи форму
 
 import { getWeather } from "./js/api";
+import { createMarkup } from "./js/createMarkup";
+
+const weatherDetails = document.querySelector('#weatherDetails');
+
+
+
 getWeather()
-    .then((data) =>{console.log(data)}
-    
-)
+    .then((data) => weatherDetails.insertAdjacentHTML('beforeend', createMarkup(data)))
+
+
+
+
+
+
+
