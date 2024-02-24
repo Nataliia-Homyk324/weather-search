@@ -5,8 +5,14 @@
 // створи файл create-markup.js для створення розмітки (https://prnt.sc/LEataI862RLd)
 // додай пошук погоди в конкретному місті використовуючи форму
 
+// 2. Додай перемикач теми і реалізуй логіку переключення світлої-темної теми
+// в окремому файлі theme-switcher.js
+// якщо обрана темна тема, при оновленні сторінки вона має залишатись
+
+
 import { getWeather } from './js/api';
 import { createMarkup } from './js/createMarkup';
+import "./js/switcher";
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
