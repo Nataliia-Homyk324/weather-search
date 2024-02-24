@@ -12,6 +12,7 @@ export function createMarkup({name, main: {feels_like, temp, humidity, pressure}
       )}&#8451;</p><p>Feels like: ${formatTemperature(
         feels_like
       )}&#8451;</p><p>Humidity: ${humidity}%</p><p>Pressure: ${pressure}</p></div>
+      <button class="save-button" type="button">Save</button>
       </div>
       `;
 }
