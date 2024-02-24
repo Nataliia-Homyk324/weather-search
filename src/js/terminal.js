@@ -19,7 +19,7 @@
 // git checkout main
 // git pull origin main
 // 3. повертаємось на свою гілку і мерджимо зміни з меін
-// git checkout your_branch
+// git pull origin main
 // git merge main
 // якщо є конфлікти, вирішуємо локально, коммітимо і ще раз мердж
 // Навігація по директоріям:
