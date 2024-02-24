@@ -5,19 +5,27 @@
 // створи файл create-markup.js для створення розмітки (https://prnt.sc/LEataI862RLd)
 // додай пошук погоди в конкретному місті використовуючи форму
 
-import { getWeather } from "./js/api";
-import { createMarkup } from "./js/createMarkup";
+import { getWeather } from './js/api';
+import { createMarkup } from './js/createMarkup';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const weatherDetails = document.querySelector('#weatherDetails');
+const searchForm = document.querySelector('#searchForm');
 
+searchForm.addEventListener('submit', onSubmit);
 
+function onSubmit(e) {
+  e.preventDefault();
 
-getWeather()
-    .then((data) => weatherDetails.insertAdjacentHTML('beforeend', createMarkup(data)))
-
-
-
-
-
-
-
+  const query = e.target.name.value.trim();
+  if (!query) {
+    return iziToast.warning({ message: 'Enter city' });
+  }
+  getWeather(query).then(data => {
+    if (!data) {
+      return iziToast.error({ message: 'Enter correct city' });
+    }
+    weatherDetails.insertAdjacentHTML('beforeend', createMarkup(data));
+  });
+}
