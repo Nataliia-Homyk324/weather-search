@@ -23,5 +23,34 @@ service.fetchPopularPhotos(page)
         pagination.reset(total);
     });
 
+pagination.on('afterMove', (event) => {
+     const currentPage = event.page;
+    service.fetchPopularPhotos(currentPage)
+        .then(({ results }) => {
+        const markup = createGalleryCard(results)
+        refs.gallery.innerHTML = markup;
+            }
+        );
+});
 
+refs.searchForm.addEventListener("submit", searchFormFoto);
 
+function searchFormFoto(event) {
+    event.preventDefault();
+    const searchQuery = event.target.elements.query.value.trim();
+    if (!searchQuery) {
+        return;
+    }
+    service.query = searchQuery;
+    service.fetchFotosByQuery(page)
+        .then(({ total, results }) => {
+            if (results.length === 0) {
+                return
+            }
+        const markup = createGalleryCard(results)
+        refs.gallery.innerHTML = markup;
+        pagination.reset(total);
+    }
+        
+    )
+};
